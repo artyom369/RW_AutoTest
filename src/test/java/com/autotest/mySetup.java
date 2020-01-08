@@ -61,4 +61,15 @@ public class mySetup extends WebDriverSettings {
 
     }
 
+    @Test
+    public void createTaskProgram() {
+
+        loginAsSuperAdmin();
+
+        // Create task program
+        driver.get("https://feature-art2.rallyware.com/management/tasks");
+        driver.findElement(By.linkText("")).click();
+
+    }
+
 }
