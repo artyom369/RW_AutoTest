@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
-public class mySetup extends WebDriverSettings {
+public class MySetup extends WebDriverSettings {
 
     @Test
     public void createCommunityGroup() {
@@ -43,8 +43,8 @@ public class mySetup extends WebDriverSettings {
 
             // Create community
         driver.get("https://feature-art.rallyware.com/management/communities");
-        driver.findElement(By.linkText("Create community")).click();
-        //driver.findElement(By.cssSelector(".controls__item")).click();
+        //driver.findElement(By.linkText("Create community")).click();
+        driver.findElement(By.cssSelector(".controls__item")).click();
         driver.findElement(By.id("community_title")).sendKeys("Art Community");
         driver.findElement(By.id("community_description_ifr")).sendKeys(" Test");
         driver.findElement(By.id("community_communityGroup")).click();
@@ -67,7 +67,7 @@ public class mySetup extends WebDriverSettings {
         loginAsSuperAdmin();
 
         // Create task program
-        driver.get("https://feature-art2.rallyware.com/management/tasks");
+        driver.get("https://feature-art.rallyware.com/management/tasks");
         driver.findElement(By.linkText("")).click();
 
     }

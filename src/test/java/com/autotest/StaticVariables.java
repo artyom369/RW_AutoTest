@@ -1,7 +1,7 @@
 package com.autotest;
 
 
-public class staticVariables {
+public class StaticVariables {
 
     String userHome = new String ("https://feature-art.rallyware.com");
     String userTasks = new String ("https://feature-art.rallyware.com/tasks");
