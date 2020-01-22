@@ -4,6 +4,8 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
 
+import static com.autotest.StaticVariables.managerLevels;
+
 public class BusinessRules extends WebDriverSettings {
 
     @Test
@@ -11,7 +13,8 @@ public class BusinessRules extends WebDriverSettings {
 
         loginAsSuperAdmin();
 
-        driver.get("https://feature-art.rallyware.com/management/levels");
+
+        driver.get(managerLevels);
         driver.findElement(By.cssSelector(".controls__item")).click();
 
         // dropDown Trigger list
@@ -29,6 +32,7 @@ public class BusinessRules extends WebDriverSettings {
         //  Trigger [Task] Task successful
         Select selectTaskSuccessful = new Select(driver.findElement(By.cssSelector(".unchosen-trigger")));
         selectTaskSuccessful.selectByValue("ext.task.completed");
+        Select selectTask = new Select(driver.findElement(By.className(".rules[1][triggers][0][config][task_id]")));
 
         //  Trigger [Task] Task failed
         Select selectTaskFailed = new Select(driver.findElement(By.cssSelector(".unchosen-trigger")));
@@ -52,5 +56,24 @@ public class BusinessRules extends WebDriverSettings {
         selectLevelReached.selectByValue("ext.level.business_rule.trigger.level_achieved");
 
 
+    }
+
+    @Test
+    public void testTriggersAndConditions() {
+
+        loginAsSuperAdmin();
+
+        driver.get(managerLevels);
+        driver.findElement(By.cssSelector(".controls__item")).click();
+
+        // dropDown Trigger list
+        driver.findElement(By.cssSelector(".rules-title > .collapse-trigger")).click();
+        driver.findElement(By.cssSelector(".add-rule-trigger")).click();
+
+        //  Trigger [Task] Task successful
+        Select selectTaskSuccessful = new Select(driver.findElement(By.cssSelector(".unchosen-trigger")));
+        selectTaskSuccessful.selectByValue("ext.task.completed");
+        Select selectTask = new Select(driver.findElement(By.cssSelector(".config-row[name=\"rules[1][triggers][0][config][task_id]\"]")));
+        selectTask.selectByValue("88");
     }
 }
