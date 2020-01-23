@@ -4,7 +4,8 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
 
-import static com.autotest.StaticVariables.managerLevels;
+import static com.autotest.StaticVariables.managementLevels;
+import static com.autotest.StaticVariables.managementLevels;
 
 public class BusinessRules extends WebDriverSettings {
 
@@ -14,7 +15,7 @@ public class BusinessRules extends WebDriverSettings {
         loginAsSuperAdmin();
 
 
-        driver.get(managerLevels);
+        driver.get(managementLevels);
         driver.findElement(By.cssSelector(".controls__item")).click();
 
         // dropDown Trigger list
@@ -63,7 +64,7 @@ public class BusinessRules extends WebDriverSettings {
 
         loginAsSuperAdmin();
 
-        driver.get(managerLevels);
+        driver.get(managementLevels);
         driver.findElement(By.cssSelector(".controls__item")).click();
 
         // dropDown Trigger list

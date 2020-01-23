@@ -7,6 +7,8 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import static com.autotest.StaticVariables.userHome;
+
 public class WebDriverSettings {
 
     public ChromeDriver driver;
@@ -21,7 +23,7 @@ public class WebDriverSettings {
     public void loginAsSuperAdmin() {
 
         //driver.manage().deleteAllCookies();
-        driver.get("https://feature-art.rallyware.com/");
+        driver.get(userHome);
         driver.findElement(By.id("username")).sendKeys("dev@rallyware.com");
         driver.findElement(By.id("password")).sendKeys("Banyaspaces350");
         driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();

@@ -13,6 +13,9 @@ import org.openqa.selenium.Keys;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
+import static com.autotest.StaticVariables.managementBadge;
+import static com.autotest.StaticVariables.managementTasks;
+
 
 public class FirstTest extends WebDriverSettings {
 
@@ -34,7 +37,8 @@ public class FirstTest extends WebDriverSettings {
         ((JavascriptExecutor)driver).executeScript("window.open()");
         ArrayList<String> tab1 = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(tab1.get(1));
-        driver.get("https://feature-art.rallyware.com/management/tasks");
+        driver.get(managementTasks);
+
 
 
         //driver.findElement(By.cssSelector("li.mdc-list-item[data-id=\"menu.management\"]"));
@@ -50,7 +54,7 @@ public class FirstTest extends WebDriverSettings {
         ((JavascriptExecutor)driver).executeScript("window.open()");
         ArrayList<String> tab = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(tab.get(1));
-        driver.get("https://feature-art.rallyware.com/management/badge");
+        driver.get(managementBadge);
         driver.findElement(By.linkText("Create badge")).click();
       //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
