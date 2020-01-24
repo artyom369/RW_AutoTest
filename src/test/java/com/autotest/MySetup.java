@@ -30,7 +30,7 @@ public class MySetup extends WebDriverSettings {
         driver.findElement(By.id("community_group_sortOrder")).clear();
         driver.findElement(By.id("community_group_sortOrder")).sendKeys("1");
 
-        //driver.wait();
+        driver.manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS);
             // Scroll to element
         ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();",driver.findElement(By.cssSelector(".btn.btn-primary")));
         driver.findElement(By.cssSelector(".btn.btn-primary")).click();

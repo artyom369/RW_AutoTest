@@ -2,10 +2,18 @@ package com.autotest;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import static com.autotest.StaticVariables.managementLevels;
-import static com.autotest.StaticVariables.managementLevels;
+
 
 public class BusinessRules extends WebDriverSettings {
 
@@ -33,7 +41,9 @@ public class BusinessRules extends WebDriverSettings {
         //  Trigger [Task] Task successful
         Select selectTaskSuccessful = new Select(driver.findElement(By.cssSelector(".unchosen-trigger")));
         selectTaskSuccessful.selectByValue("ext.task.completed");
-        Select selectTask = new Select(driver.findElement(By.className(".rules[1][triggers][0][config][task_id]")));
+        Select selectTask = new Select(driver.findElement(By.xpath("//div[@class=\"config-row\"]/select")));
+        selectTask.selectByValue("89");
+
 
         //  Trigger [Task] Task failed
         Select selectTaskFailed = new Select(driver.findElement(By.cssSelector(".unchosen-trigger")));
@@ -64,6 +74,8 @@ public class BusinessRules extends WebDriverSettings {
 
         loginAsSuperAdmin();
 
+        driver.manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS);
+
         driver.get(managementLevels);
         driver.findElement(By.cssSelector(".controls__item")).click();
 
@@ -71,10 +83,12 @@ public class BusinessRules extends WebDriverSettings {
         driver.findElement(By.cssSelector(".rules-title > .collapse-trigger")).click();
         driver.findElement(By.cssSelector(".add-rule-trigger")).click();
 
-        //  Trigger [Task] Task successful
+        //  Trigger [Task] Task failed
         Select selectTaskSuccessful = new Select(driver.findElement(By.cssSelector(".unchosen-trigger")));
-        selectTaskSuccessful.selectByValue("ext.task.completed");
-        Select selectTask = new Select(driver.findElement(By.cssSelector(".config-row[name=\"rules[1][triggers][0][config][task_id]\"]")));
-        selectTask.selectByValue("88");
+        selectTaskSuccessful.selectByValue("ext.task.failed");
+
+        Select selectTask = new Select(driver.findElement(By.xpath("//div[@class=\"config-row\"]/select")));
+        selectTask.selectByValue("74");
+
     }
 }
